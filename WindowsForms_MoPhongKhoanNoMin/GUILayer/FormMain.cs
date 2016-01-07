@@ -521,6 +521,16 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             }
         }
 
+        //
+        private void barButtonItem_HoChieuNoMin_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int hView = Lcad.PropGetHandle(hDrw, Lcad.LC_PROP_DRW_VIEW);
+            Lcad.ViewRasterize(hView, @"" + Application.StartupPath + "\\Sodobaino.bmp", 0, 0, 0, 0, 10);
+
+            FormBaoCaoThongKe fm = new FormBaoCaoThongKe(hoChieuChinh);
+            fm.Show();
+        }
+
         private void MouseDblClkProc_XayDungLuoiLoMin(int hWnd, int Button, int Flags, int Xwin, int Ywin, double Xdrw, double Ydrw)
         {
             int hBlockModel = Lcad.PropGetHandle(hDrw, Lcad.LC_PROP_DRW_BLOCK_MODEL);

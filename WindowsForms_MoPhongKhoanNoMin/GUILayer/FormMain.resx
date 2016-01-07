@@ -767,6 +767,25 @@
         DGN2FpVWDHGhzuxFZSUqK1FZico62ukDyrRhPmC71OMAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="barButtonItem_HoChieuNoMin.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAFnRFWHRUaXRsZQBUZXh0O1Bh
+        Z2U7UmVwb3J0dmFhAAAAAFVJREFUOE9j+P//P0UYzmhpafmPB/+D0sbImkEYxQB8ACTf19d3F90QkgwA
+        gl/ohpBkADIGAtIMQAZ4DfBt2oEXg8CoC2jtAmIA7QwgBWMYQB7+zwAAuicvos+uzscAAAAASUVORK5C
+        YII=
+</value>
+  </data>
+  <data name="barButtonItem_HoChieuNoMin.LargeGlyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAFnRFWHRUaXRsZQBUZXh0O1Bh
+        Z2U7UmVwb3J0dmFhAAAAALtJREFUWEftkkEKgzAURD2f0EuVbHOE3KOXyUroIdpF+gcMaBxKTWUs5Q88
+        JKNJHh+HUsqp0FIJLZXQUgktQQih7GQyRgN7N7A7AC2BbbLH58H3McZnSmm0ZXvWar2ElqBHIOdMJWQC
+        CJOQCiCthFwAmSUekDhFAKkS9m7zY1ZoCXoE3nC3T+g9tATYeFTms+g9tAQ/J3C53naxjE/AJ+AT8An8
+        xwS+iQt0CxxJe36FlkpoqYSWSmipowwv31jFbxjUc3kAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="defaultLookAndFeel_FormMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>122, 17</value>
   </metadata>

@@ -114,6 +114,7 @@
     <Compile Include="BusinessLayer\BS_KipDien.cs" />
     <Compile Include="BusinessLayer\BS_LiteCAD.cs" />
     <Compile Include="BusinessLayer\DanhSachKipDien.cs" />
+    <Compile Include="BusinessLayer\ExportData.cs" />
     <Compile Include="BusinessLayer\KipDien.cs" />
     <Compile Include="BusinessLayer\BanVe.cs" />
     <Compile Include="BusinessLayer\BS_BanVe.cs" />
@@ -170,6 +171,12 @@
       <DependentUpon>UserControl_PreviewButton.cs</DependentUpon>
     </Compile>
     <Compile Include="DataAccessLayer\Connection.cs" />
+    <Compile Include="GUILayer\FormBaoCaoThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormBaoCaoThongKe.Designer.cs">
+      <DependentUpon>FormBaoCaoThongKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUILayer\FormHoChieuMoi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\UserControl_PreviewButton.resx">
       <DependentUpon>UserControl_PreviewButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormBaoCaoThongKe.resx">
+      <DependentUpon>FormBaoCaoThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUILayer\FormHoChieuMoi.resx">
       <DependentUpon>FormHoChieuMoi.cs</DependentUpon>
@@ -455,6 +465,15 @@
       <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>1</VersionMajor>
       <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>6</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>

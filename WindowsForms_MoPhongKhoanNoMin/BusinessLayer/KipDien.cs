@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
 {
-    class KipDien
+    public class KipDien
     {
         private String iDLoKhoan;
         private double thoiGian;

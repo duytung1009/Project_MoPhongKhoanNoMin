@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
 {
-    class LoKhoan
+    public class LoKhoan
     {
         private String iD;
         private String maHoChieu;
@@ -72,6 +72,25 @@ namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
             this.lkk = _lkk;
             this.l0 = _l0;
             this.lbua = _lbua;
+        }
+        
+        //dirty way
+        public LoKhoan(String _iD, double _banKinh, double _chieuSau)
+        {
+            this.iD = _iD;
+            this.maHoChieu = null;
+            this.maBanVe = null;
+            this.maMayKhoan = null;
+            this.maLoKhoan = null;
+            this.banKinh = _banKinh;
+            this.chieuSau = _chieuSau;
+            this.huongKhoan = null;
+            this.toaDoX = 0;
+            this.toaDoY = 0;
+            this.lt = 0;
+            this.lkk = 0;
+            this.l0 = 0;
+            this.lbua = 0;
         }
 
         public LoKhoan(String maHoChieu, Circle c)

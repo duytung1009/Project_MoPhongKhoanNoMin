@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
 {
-    class MayKhoan
+    public class MayKhoan
     {
         private String maMayKhoan;
         private String tenMayKhoan;

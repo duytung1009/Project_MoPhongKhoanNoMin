@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
 {
-    class CapDoNo
+    public class CapDoNo
     {
         private String maCapDo;
         private String tenCapDo;

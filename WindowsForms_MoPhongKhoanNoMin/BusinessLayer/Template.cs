@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
 {
-    class Template
+    public class Template
     {
         private String iD;
         private String tenTemplate;

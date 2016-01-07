@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
 {
-    class ThuocNo
+    public class ThuocNo
     {
         private String maThuocNo;
         private String tenThuocNo;

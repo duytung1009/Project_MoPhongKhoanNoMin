@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
 {
-    class Circle
+    public class Circle
     {
         private int handle;
         private double x;               //tọa độ X tâm đường tròn

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
 {
-    class KipNo
+    public class KipNo
     {
         private String maKipNo;
         private String tenKipNo;
