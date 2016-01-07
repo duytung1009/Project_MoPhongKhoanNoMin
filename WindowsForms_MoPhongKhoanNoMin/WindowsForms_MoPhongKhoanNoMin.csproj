@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F640DED5-1404-4B7C-A966-32C23CCAE1F0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WindowsForms_MoPhongKhoanNoMin</RootNamespace>
+    <AssemblyName>WindowsForms_MoPhongKhoanNoMin</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v15.1" />
+    <Reference Include="DevExpress.Data.v15.1" />
+    <Reference Include="DevExpress.Mvvm.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v15.1.Core" />
+    <Reference Include="DevExpress.RichEdit.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v15.1" />
+    <Reference Include="DevExpress.Xpf.Core.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Themes.DXStyle.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Themes.Office2013.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Themes.Office2013DarkGray.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Themes.Office2013LightGray.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v15.1" />
+    <Reference Include="DevExpress.Sparkline.v15.1.Core" />
+    <Reference Include="DevExpress.XtraEditors.v15.1" />
+    <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.98.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.98.1\lib\net451\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.98.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.98.1\lib\net451\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.98.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.98.1\lib\net451\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessLayer\BS_KipDien.cs" />
+    <Compile Include="BusinessLayer\BS_LiteCAD.cs" />
+    <Compile Include="BusinessLayer\DanhSachKipDien.cs" />
+    <Compile Include="BusinessLayer\KipDien.cs" />
+    <Compile Include="BusinessLayer\BanVe.cs" />
+    <Compile Include="BusinessLayer\BS_BanVe.cs" />
+    <Compile Include="BusinessLayer\BS_CapDoNo.cs" />
+    <Compile Include="BusinessLayer\BS_CongTruong.cs" />
+    <Compile Include="BusinessLayer\BS_DatDa.cs" />
+    <Compile Include="BusinessLayer\BS_HoChieu.cs" />
+    <Compile Include="BusinessLayer\BS_KipNo.cs" />
+    <Compile Include="BusinessLayer\BS_LoKhoan.cs" />
+    <Compile Include="BusinessLayer\BS_Main.cs" />
+    <Compile Include="BusinessLayer\BS_MayKhoan.cs" />
+    <Compile Include="BusinessLayer\BS_PhuKienNo.cs" />
+    <Compile Include="BusinessLayer\BS_PhuongPhapNo.cs" />
+    <Compile Include="BusinessLayer\BS_Template.cs" />
+    <Compile Include="BusinessLayer\BS_ThuocNo.cs" />
+    <Compile Include="BusinessLayer\CapDoNo.cs" />
+    <Compile Include="BusinessLayer\Circle.cs" />
+    <Compile Include="BusinessLayer\CongTruong.cs" />
+    <Compile Include="BusinessLayer\DatDa.cs" />
+    <Compile Include="BusinessLayer\HoChieu.cs" />
+    <Compile Include="BusinessLayer\KipNo.cs" />
+    <Compile Include="BusinessLayer\LoKhoan.cs" />
+    <Compile Include="BusinessLayer\ManageCircle.cs" />
+    <Compile Include="BusinessLayer\MayKhoan.cs" />
+    <Compile Include="BusinessLayer\PhuKienNo.cs" />
+    <Compile Include="BusinessLayer\PhuongPhapNo.cs" />
+    <Compile Include="BusinessLayer\Template.cs" />
+    <Compile Include="BusinessLayer\ThuocNo.cs" />
+    <Compile Include="CustomControls\DataViewer.xaml.cs">
+      <DependentUpon>DataViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Loading.Designer.cs">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\UserControl_BanVe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\UserControl_BanVe.Designer.cs">
+      <DependentUpon>UserControl_BanVe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\UserControl_LoKhoan.xaml.cs">
+      <DependentUpon>UserControl_LoKhoan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\UserControl_Notify.xaml.cs">
+      <DependentUpon>UserControl_Notify.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\UserControl_PreviewButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\UserControl_PreviewButton.Designer.cs">
+      <DependentUpon>UserControl_PreviewButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessLayer\Connection.cs" />
+    <Compile Include="GUILayer\FormHoChieuMoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormHoChieuMoi.Designer.cs">
+      <DependentUpon>FormHoChieuMoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormLoKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormLoKhoan.Designer.cs">
+      <DependentUpon>FormLoKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormLoKhoanHoChieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormLoKhoanHoChieu.Designer.cs">
+      <DependentUpon>FormLoKhoanHoChieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormMoHoChieuDatabase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormMoHoChieuDatabase.Designer.cs">
+      <DependentUpon>FormMoHoChieuDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormNhapTenHoChieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormNhapTenHoChieu.Designer.cs">
+      <DependentUpon>FormNhapTenHoChieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyBanVe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyBanVe.Designer.cs">
+      <DependentUpon>FormQuanLyBanVe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyCapDoNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyCapDoNo.Designer.cs">
+      <DependentUpon>FormQuanLyCapDoNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyCongTruong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyCongTruong.Designer.cs">
+      <DependentUpon>FormQuanLyCongTruong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyDatDa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyDatDa.Designer.cs">
+      <DependentUpon>FormQuanLyDatDa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyHoChieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyHoChieu.Designer.cs">
+      <DependentUpon>FormQuanLyHoChieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyKipNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyKipNo.Designer.cs">
+      <DependentUpon>FormQuanLyKipNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyLoKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyLoKhoan.Designer.cs">
+      <DependentUpon>FormQuanLyLoKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyMayKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyMayKhoan.Designer.cs">
+      <DependentUpon>FormQuanLyMayKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyPhuKienNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyPhuKienNo.Designer.cs">
+      <DependentUpon>FormQuanLyPhuKienNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyPhuongPhapNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyPhuongPhapNo.Designer.cs">
+      <DependentUpon>FormQuanLyPhuongPhapNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyThuocNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormQuanLyThuocNo.Designer.cs">
+      <DependentUpon>FormQuanLyThuocNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormStart.Designer.cs">
+      <DependentUpon>FormStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormTest.Designer.cs">
+      <DependentUpon>FormTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormThongTinBanVe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormThongTinBanVe.Designer.cs">
+      <DependentUpon>FormThongTinBanVe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUILayer\FormXayDungLoKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormXayDungLoKhoan.Designer.cs">
+      <DependentUpon>FormXayDungLoKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Litecad.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GUILayer\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUILayer\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CustomControls\Loading.resx">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\UserControl_BanVe.resx">
+      <DependentUpon>UserControl_BanVe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\UserControl_PreviewButton.resx">
+      <DependentUpon>UserControl_PreviewButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormHoChieuMoi.resx">
+      <DependentUpon>FormHoChieuMoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormLoKhoan.resx">
+      <DependentUpon>FormLoKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormLoKhoanHoChieu.resx">
+      <DependentUpon>FormLoKhoanHoChieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormMoHoChieuDatabase.resx">
+      <DependentUpon>FormMoHoChieuDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormNhapTenHoChieu.resx">
+      <DependentUpon>FormNhapTenHoChieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormQuanLyBanVe.resx">
+      <DependentUpon>FormQuanLyBanVe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormQuanLyCapDoNo.resx">
+      <DependentUpon>FormQuanLyCapDoNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormQuanLyCongTruong.resx">
+      <DependentUpon>FormQuanLyCongTruong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormQuanLyDatDa.resx">
+      <DependentUpon>FormQuanLyDatDa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormQuanLyHoChieu.resx">
+      <DependentUpon>FormQuanLyHoChieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormQuanLyKipNo.resx">
+      <DependentUpon>FormQuanLyKipNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormQuanLyLoKhoan.resx">
+      <DependentUpon>FormQuanLyLoKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormQuanLyMayKhoan.resx">
+      <DependentUpon>FormQuanLyMayKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormQuanLyPhuKienNo.resx">
+      <DependentUpon>FormQuanLyPhuKienNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormQuanLyPhuongPhapNo.resx">
+      <DependentUpon>FormQuanLyPhuongPhapNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormQuanLyThuocNo.resx">
+      <DependentUpon>FormQuanLyThuocNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormStart.resx">
+      <DependentUpon>FormStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormTest.resx">
+      <DependentUpon>FormTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormThongTinBanVe.resx">
+      <DependentUpon>FormThongTinBanVe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUILayer\FormXayDungLoKhoan.resx">
+      <DependentUpon>FormXayDungLoKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="CustomControls\DataViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\UserControl_LoKhoan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\UserControl_Notify.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back_inverted.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left_arrow_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wrench_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
