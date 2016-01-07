@@ -12,6 +12,7 @@ using DevExpress.XtraEditors;
 using System.Diagnostics;
 using System.Reflection;
 using System.IO;
+using System.Threading;
 using Word = Microsoft.Office.Interop.Word;
 using WindowsForms_MoPhongKhoanNoMin.BusinessLayer;
 using WindowsForms_MoPhongKhoanNoMin.CustomControls;
@@ -37,12 +38,40 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             //add text control
             textLabel.Add(labelText);
             textLabel.Add(labelText2);
+            textLabel.Add(labelText3);
+            textLabel.Add(label_GiaTri1);
+            textLabel.Add(label_GiaTri2);
+            textLabel.Add(label_GiaTri3);
+            textLabel.Add(label_GiaTri4);
+            textLabel.Add(label_GiaTri5);
+            textLabel.Add(label_GiaTri6);
+            textLabel.Add(label_GiaTri7);
             //add value control
             valueLabel.Add(labelValue_TenBanVe);
+            valueLabel.Add(labelValue_GiaTri1);
+            valueLabel.Add(labelValue_GiaTri2);
+            valueLabel.Add(labelValue_GiaTri3);
+            valueLabel.Add(labelValue_GiaTri4);
+            valueLabel.Add(labelValue_GiaTri5);
+            valueLabel.Add(labelValue_GiaTri6);
+            valueLabel.Add(labelValue_GiaTri7);
             //add combobox control
             valueComboBox.Add(comboBox_MaHoChieu);
             //add button control
             buttonGroup.Add(buttonTaoMoi);
+            //UI
+            this.BackColor = Properties.Settings.Default.FormBackgroundColor;
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            foreach (Button b in buttonGroup)
+            {
+                b.BackColor = Properties.Settings.Default.ButtonColor;
+                b.FlatAppearance.BorderSize = 0;
+            }
+            foreach (Label l in textLabel)
+            {
+                l.ForeColor = Properties.Settings.Default.TextColor;
+            }
             idHoChieu = _HoChieu.MaHoChieu;
             comboBox_MaHoChieu.DataSource = BS_HoChieu.DanhSachHoChieu();
             comboBox_MaHoChieu.DisplayMember = "TenHoChieu";
@@ -60,18 +89,38 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             if(comboBox_MaHoChieu.SelectedItem != null)
             {
                 labelValue_TenBanVe.Text = (BS_BanVe.BanVe((comboBox_MaHoChieu.SelectedItem as HoChieu).MaBanVe)).TenBanVe;
+                ExportData Objdata = new ExportData((comboBox_MaHoChieu.SelectedItem as HoChieu).MaHoChieu);
+                labelValue_GiaTri1.Text = Objdata.congTB.ToString();
+                labelValue_GiaTri2.Text = Objdata.duongKhang.ToString();
+                labelValue_GiaTri3.Text = Objdata.KC_Cot.ToString();
+                labelValue_GiaTri4.Text = Objdata.KC_Hang.ToString();
+                labelValue_GiaTri5.Text = Objdata.chieuSauThem.ToString();
+                labelValue_GiaTri6.Text = Objdata.chieuSauToanBoLK.ToString();
+                labelValue_GiaTri7.Text = Objdata.chieuDaiBua.ToString();
             }                   
         }
 
         private void buttonTaoMoi_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            Thread t = new Thread(new ThreadStart(BS_Main.LoadingScreen));
+            try
             {
-                CreateWordDocument(Application.StartupPath + "\\template.doc", saveFileDialog1.FileName);
-
+                t.Start();              
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    String fullPath = Path.GetFullPath(Path.Combine((@"" + Application.StartupPath), @"..\..\"));
+                    CreateWordDocument(fullPath + "Template\\template.doc", saveFileDialog1.FileName);
+                }
             }
-            else { MessageBox.Show("You hit cancel or closed the dialog."); }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+            finally
+            {
+                t.Abort();
+            }
         }
 
         private void CreateWordDocument(object filename, object saves)

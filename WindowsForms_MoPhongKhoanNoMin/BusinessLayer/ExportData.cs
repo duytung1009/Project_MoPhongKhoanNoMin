@@ -37,13 +37,13 @@ namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
             while (dr.Read())
             {
                 hoChieu.TenHoChieu = dr["TenHoChieu"].ToString();
-                hoChieu.ChieuCaoTang = Convert.ToDouble(dr["ChieuCaoTang"].ToString());
-                hoChieu.HeSoKC = Convert.ToDouble(dr["HeSoKC"].ToString());
-                hoChieu.KichThuoc_X = Convert.ToDouble(dr["KichThuoc_X"].ToString());
-                hoChieu.KichThuoc_Y = Convert.ToDouble(dr["KichThuoc_Y"].ToString());
+                hoChieu.ChieuCaoTang = (dr["ChieuCaoTang"].ToString() == String.Empty ? 0 : Convert.ToDouble(dr["ChieuCaoTang"].ToString()));
+                hoChieu.HeSoKC = (dr["HeSoKC"].ToString() == String.Empty ? 0 : Convert.ToDouble(dr["HeSoKC"].ToString()));
+                hoChieu.KichThuoc_X = (dr["KichThuoc_X"].ToString() == String.Empty ? 0 : Convert.ToDouble(dr["KichThuoc_X"].ToString()));
+                hoChieu.KichThuoc_Y = (dr["KichThuoc_Y"].ToString() == String.Empty ? 0 : Convert.ToDouble(dr["KichThuoc_Y"].ToString()));
 
                 //thoiDiemNo = Convert.ToDateTime(dr["ThoiDiemNo"].ToString());
-   
+
                 hoChieu.MaDatDa = dr["MaDatDa"].ToString();
                 hoChieu.MaCapDo = dr["MaCapDo"].ToString();
                 hoChieu.MaMayKhoan = dr["MaMayKhoan"].ToString();
