@@ -32,7 +32,7 @@ namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
         public ExportData(String _maHoChieu)
         {
             Connection conn = new Connection();
-            string sql = "SELECT HoChieu.*,LoKhoan.ID,LoKhoan.MaLK,LoKhoan.BanKinhLK,LoKhoan.ChieuSauLK FROM  LoKhoan ,BanVe,HoChieu WHERE HoChieu.MaHoChieu = LoKhoan.MaHoChieu and BanVe.ID= LoKhoan.MaBanVe and HoChieu.MaHoChieu = \'" + _maHoChieu + "\'  AND BanVe.ID= \'" + BS_BanVe.BanVe(_maHoChieu).ID + "\';";
+            string sql = "SELECT HoChieu.*, LoKhoan.ID, LoKhoan.MaLK, LoKhoan.BanKinhLK, LoKhoan.ChieuSauLK FROM LoKhoan, BanVe, HoChieu WHERE HoChieu.MaHoChieu = LoKhoan.MaHoChieu And BanVe.ID= HoChieu.MaBanVe and HoChieu.MaHoChieu = \'" + _maHoChieu + "\';";
             SQLiteDataReader dr = conn.GetData(sql);
             while (dr.Read())
             {
@@ -42,8 +42,8 @@ namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
                 hoChieu.KichThuoc_X = Convert.ToDouble(dr["KichThuoc_X"].ToString());
                 hoChieu.KichThuoc_Y = Convert.ToDouble(dr["KichThuoc_Y"].ToString());
 
-                thoiDiemNo = DateTime.ParseExact(dr["ThoiDiemNo"].ToString(), "dd/M/yyyy hh:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-
+                //thoiDiemNo = Convert.ToDateTime(dr["ThoiDiemNo"].ToString());
+   
                 hoChieu.MaDatDa = dr["MaDatDa"].ToString();
                 hoChieu.MaCapDo = dr["MaCapDo"].ToString();
                 hoChieu.MaMayKhoan = dr["MaMayKhoan"].ToString();

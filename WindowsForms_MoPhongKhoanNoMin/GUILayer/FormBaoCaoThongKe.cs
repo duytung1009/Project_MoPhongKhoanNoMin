@@ -57,7 +57,10 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
 
         private void comboBox_MaHoChieu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            labelValue_TenBanVe.Text = (BS_BanVe.BanVe((comboBox_MaHoChieu.SelectedItem as HoChieu).MaBanVe)).TenBanVe;          
+            if(comboBox_MaHoChieu.SelectedItem != null)
+            {
+                labelValue_TenBanVe.Text = (BS_BanVe.BanVe((comboBox_MaHoChieu.SelectedItem as HoChieu).MaBanVe)).TenBanVe;
+            }                   
         }
 
         private void buttonTaoMoi_Click(object sender, EventArgs e)
@@ -75,24 +78,31 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
         {
             object missing = Missing.Value;
 
-            Word.Application wordApp = new Word.Application();
+            Word.Application wordApp = null;
             Word.Document doc = null;
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
             //word.Table table;
             if (File.Exists((string)filename))
             {
                 DateTime today = DateTime.Now;
                 object readOnly = false;
-                object isvisible = false;
+                object isvisible = false;                
+                if(wordApp == null)
+                {
+                    wordApp = new Word.Application();
+                }
                 wordApp.Visible = false;
-
-                /*doc = wordApp.Documents.Open(ref filename, ref missing, ref readOnly,
+                /*doc = wordApp.Documents.Open(ref filename, ref missing, ref missing,
                                                 ref missing, ref missing, ref missing,
                                                 ref missing, ref missing, ref missing,
                                                 ref missing, ref missing, ref missing,
                                                 ref missing, ref missing, ref missing, ref missing);*/
-                doc = wordApp.Documents.Open(ref filename, ReadOnly: false, Visible: true);
-                doc.Activate();
-
+                doc = wordApp.Documents.Open(ref filename);
+                doc.ActiveWindow.Selection.WholeStory();
+                //doc.Activate();
                 ExportData Objdata = new ExportData((comboBox_MaHoChieu.SelectedItem as HoChieu).MaHoChieu);
                 //this.FindAndReplace(wordApp, "DonVi", txtDonviNo.Text.Trim());
                 this.FindAndReplace(wordApp, "hour", (Objdata.thoiDiemNo.Hour.ToString() == String.Empty ? "" : Objdata.thoiDiemNo.Hour.ToString()) );
@@ -100,7 +110,7 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
                 this.FindAndReplace(wordApp, "day", (Objdata.thoiDiemNo.Day.ToString() == String.Empty ? "" : Objdata.thoiDiemNo.Day.ToString()) );
                 this.FindAndReplace(wordApp, "month", (Objdata.thoiDiemNo.Month.ToString() == String.Empty ? "" : Objdata.thoiDiemNo.Month.ToString()) );
                 this.FindAndReplace(wordApp, "year", (Objdata.thoiDiemNo.Year.ToString() == String.Empty ? "" : Objdata.thoiDiemNo.Year.ToString()) );
-                this.FindAndReplace(wordApp, "DiaDiemNo", (Objdata.congTruong.TenCongTruong.ToString() == String.Empty ? "" : Objdata.congTruong.TenCongTruong.ToString()) );
+                this.FindAndReplace(wordApp, "DiaDiemNo", (Objdata.congTruong.TenCongTruong == String.Empty ? "" : Objdata.congTruong.TenCongTruong) );
                 this.FindAndReplace(wordApp, "TenDatDa", Objdata.datDa.TenDatDa.ToString());
                 Word.Range range = doc.Range(ref missing, ref missing);
                 for (int i = 1; i < Objdata.danhSachLoKhoan.Count; i++)
@@ -114,12 +124,12 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
                     doc.Tables[2].Rows[i + 1].Cells[9].Range.Text = Objdata.chieuDaiBua.ToString();
                 }
                 Word.Range rangePic = doc.Tables[5].Range;
-                rangePic.InlineShapes.AddPicture(@"" + Application.StartupPath + "\\Sodobaino.bmp", ref missing, ref missing, ref missing);
+                String fullPath = Path.GetFullPath(Path.Combine((@"" + Application.StartupPath), @"..\..\"));
+                rangePic.InlineShapes.AddPicture(fullPath + "Template\\ViewTemp.bmp", ref missing, ref missing, ref missing);
                 // var shape = doc.Bookmarks["PicHere"].Range.InlineShapes.AddPicture(@"C:\2.jpg", false, true);
                 // doc.InlineShapes.AddPicture(@""+Application.StartupPath +"\\Sodobaino.bmp", ref missing, ref missing, ranges);
                 // shape.Width = 150;
-                // shape.Height = 150;
-
+                // shape.Height = 150;                 
             }
             else
             {
@@ -136,7 +146,31 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
         }
         private void FindAndReplace(Word.Application app, object findText, object replaceWithText)
         {
-            object matchCase = true;
+            object missing = Missing.Value;
+            Word.Find findObject = app.ActiveWindow.Selection.Find;
+            findObject.ClearFormatting();
+            findObject.Text = findText as String;
+            findObject.Replacement.ClearFormatting();
+            findObject.Replacement.Text = replaceWithText as String;
+
+            object replaceAll = Word.WdReplace.wdReplaceAll;
+            findObject.Execute(ref missing, ref missing, ref missing, ref missing, ref missing,
+                ref missing, ref missing, ref missing, ref missing, ref missing,
+                ref replaceAll, ref missing, ref missing, ref missing, ref missing);
+
+            /*Word.Find fnd = app.ActiveWindow.Selection.Find;
+
+            fnd.ClearFormatting();
+            fnd.Replacement.ClearFormatting();
+            fnd.Forward = true;
+            fnd.Wrap = Word.WdFindWrap.wdFindContinue;
+
+            fnd.Text = findText as String;
+            fnd.Replacement.Text = replaceWithText as String;
+
+            fnd.Execute(Replace: Word.WdReplace.wdReplaceAll);*/
+
+            /*object matchCase = true;
             object matchWholeWord = true;
             object matchWillCards = false;
             object matchSoundLike = false;
@@ -148,7 +182,7 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             object matchAleftHamza = false;
             object matchControl = false;
             object read_Only = false;
-            object visible = true;
+            object visible = false;
             object replace = 2;
             object wrap = 1;
 
@@ -158,7 +192,7 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
                                         ref forward, ref wrap, ref format,
                                         ref replaceWithText, ref replace, ref matchKashida,
                                         ref matchDiactitics, ref matchAleftHamza,
-                                        ref matchControl);
+                                        ref matchControl);*/
         }
     }
 }
