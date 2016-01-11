@@ -67,22 +67,26 @@ namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
 
             //Lấy hết giá trị của bảng Công trường
             congTruong = BS_CongTruong.CongTruong(hoChieu.MaCongTruong);
-
+           
             //tính toán
-            congTB = Math.Round((thuocNo.KhaNangSinhCong / 360) * 100) / 100;   // Cong trung binh (e)
-
-            //duong Khang chan tang
-            duongKhang = Math.Round((53 * datDa.KCTB_KhoiNut * (mayKhoan.DuongKinhLoKhoan / 1000) * Math.Sqrt(thuocNo.MatDoNapThuoc * congTB / datDa.DungTrong) * (1.6 - 0.5 * hoChieu.HeSoKC)) * 100) / 100;
+            congTB = Math.Round((thuocNo.KhaNangSinhCong / 360), 2);   // Cong trung binh (e)
+                                                                       //double congtb = thuocNo.KhaNangSinhCong / 360; // Cong trung binh (e)
+                                                                       //congtb = Math.Round(congtb * 100) / 100;
+                                                                       //duong Khang chan tang
+                                                                       // duongKhang = Math.Round((53 * datDa.KCTB_KhoiNut * (mayKhoan.DuongKinhLoKhoan / 1000) * Math.Sqrt(thuocNo.MatDoNapThuoc * congTB / datDa.DungTrong) * (1.6 - 0.5 * hoChieu.HeSoKC)) * 100) / 100;
+            duongKhang = Math.Round((53 * datDa.HeSoDatDa * (mayKhoan.DuongKinhLoKhoan / 1000) * Math.Sqrt((thuocNo.MatDoNapThuoc * (congTB / datDa.DungTrong))) * (1.6 - 0.5 * hoChieu.HeSoKC)), 2);
             //Khoang cach giua cac lo min  (Kí Hiệu {A})
-            KC_Cot = Math.Round((hoChieu.HeSoKC * duongKhang) * 100) / 100;
+            // KC_Cot = Math.Round((hoChieu.HeSoKC * duongKhang) * 100) / 100;
+            KC_Cot = Math.Round((hoChieu.HeSoKC * duongKhang), 2);
             // Khoảng cách giữa các hàng  (Kí Hiệu {b})
-            KC_Hang = Math.Round((0.85 * KC_Cot) * 100) / 100;
+            // KC_Hang = Math.Round((0.85 * KC_Cot) * 100) / 100;
+            KC_Hang = Math.Round((0.85 * KC_Cot), 2);
             //Chieu sau khoan them
-            chieuSauThem = Math.Round((0.3 * KC_Hang) * 100) / 100;
+            chieuSauThem = Math.Round((0.3 * KC_Hang), 2);
             // Chieu dai lo khoan (Kí Hiệu {Lk})
-            chieuSauToanBoLK = Math.Round((mayKhoan.ChieuSau + chieuSauThem) * 100) / 100;
+            chieuSauToanBoLK = Math.Round((mayKhoan.ChieuSau + chieuSauThem), 2);
             // Chieu cao cột bua thiết kế ( Kí Hiệu {Lbua})
-            chieuDaiBua = Math.Round((0.75 * duongKhang) * 100) / 100;
+            chieuDaiBua = Math.Round((0.75 * duongKhang), 2);
             //Hang min
             //hangMin = Convert.ToInt32(hoChieu.KichThuoc_Y / KC_Hang);
             //Hangmin = Math.Round(Hangmin * 100) / 100;

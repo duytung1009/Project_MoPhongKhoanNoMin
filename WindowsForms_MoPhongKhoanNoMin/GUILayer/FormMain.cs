@@ -123,7 +123,7 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
                 List<Circle> listCircle = mgCircles.GetListCircles();
                 foreach (Circle c in listCircle)
                 {
-                    if (CheckInCirlce(Xdrw, Ydrw, c))
+                    if (BS_LiteCAD.CheckInCirlce(Xdrw, Ydrw, c))
                     {
                         FormLoKhoan fm = new FormLoKhoan(hoChieuChinh.MaHoChieu ,c.GetID().ToString());
                         fm.Show();
@@ -131,13 +131,6 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
                     }
                 }
             }
-        }
-        private bool CheckInCirlce(double x, double y, Circle c)
-        {
-            double kc = Math.Sqrt((x - c.GetX()) * (x - c.GetX()) + (y - c.GetY()) * (y - c.GetY()));
-            if (kc < c.GetRadius())
-            { return true; }
-            return false;
         }
         //tab - hệ thống
         //tạo bản vẽ

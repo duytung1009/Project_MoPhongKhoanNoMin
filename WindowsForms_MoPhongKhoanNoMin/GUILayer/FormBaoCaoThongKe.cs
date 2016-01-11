@@ -21,7 +21,7 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
 {
     public partial class FormBaoCaoThongKe : DevExpress.XtraEditors.XtraForm
     {
-        private String idHoChieu;
+        private String idHoChieu, fileName;
         List<Label> textLabel = new List<Label>();
         List<Label> valueLabel = new List<Label>();
         List<System.Windows.Forms.ComboBox> valueComboBox = new List<System.Windows.Forms.ComboBox>();
@@ -37,7 +37,6 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             InitializeComponent();
             //add text control
             textLabel.Add(labelText);
-            textLabel.Add(labelText2);
             textLabel.Add(labelText3);
             textLabel.Add(label_GiaTri1);
             textLabel.Add(label_GiaTri2);
@@ -47,7 +46,6 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             textLabel.Add(label_GiaTri6);
             textLabel.Add(label_GiaTri7);
             //add value control
-            valueLabel.Add(labelValue_TenBanVe);
             valueLabel.Add(labelValue_GiaTri1);
             valueLabel.Add(labelValue_GiaTri2);
             valueLabel.Add(labelValue_GiaTri3);
@@ -76,7 +74,6 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             comboBox_MaHoChieu.DataSource = BS_HoChieu.DanhSachHoChieu();
             comboBox_MaHoChieu.DisplayMember = "TenHoChieu";
             comboBox_MaHoChieu.Text = _HoChieu.TenHoChieu;
-            labelValue_TenBanVe.Text = (BS_BanVe.BanVe(_HoChieu.MaBanVe)).TenBanVe;
         }
 
         private void FormBaoCaoThongKe_Shown(object sender, EventArgs e)
@@ -88,15 +85,14 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
         {
             if(comboBox_MaHoChieu.SelectedItem != null)
             {
-                labelValue_TenBanVe.Text = (BS_BanVe.BanVe((comboBox_MaHoChieu.SelectedItem as HoChieu).MaBanVe)).TenBanVe;
                 ExportData Objdata = new ExportData((comboBox_MaHoChieu.SelectedItem as HoChieu).MaHoChieu);
                 labelValue_GiaTri1.Text = Objdata.congTB.ToString();
-                labelValue_GiaTri2.Text = Objdata.duongKhang.ToString();
-                labelValue_GiaTri3.Text = Objdata.KC_Cot.ToString();
-                labelValue_GiaTri4.Text = Objdata.KC_Hang.ToString();
-                labelValue_GiaTri5.Text = Objdata.chieuSauThem.ToString();
-                labelValue_GiaTri6.Text = Objdata.chieuSauToanBoLK.ToString();
-                labelValue_GiaTri7.Text = Objdata.chieuDaiBua.ToString();
+                labelValue_GiaTri2.Text = Objdata.duongKhang.ToString() + " mét";
+                labelValue_GiaTri3.Text = Objdata.KC_Cot.ToString() + " mét";
+                labelValue_GiaTri4.Text = Objdata.KC_Hang.ToString() + " mét";
+                labelValue_GiaTri5.Text = Objdata.chieuSauThem.ToString() + " mét";
+                labelValue_GiaTri6.Text = Objdata.chieuSauToanBoLK.ToString() + " mét";
+                labelValue_GiaTri7.Text = Objdata.chieuDaiBua.ToString() + " mét";
             }                   
         }
 
@@ -104,11 +100,13 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
         {
             Thread t = new Thread(new ThreadStart(BS_Main.LoadingScreen));
             try
-            {
-                t.Start();              
+            {            
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
+                    t.Start();
+                    fileName = saveFileDialog1.FileName;
+                    idHoChieu += (comboBox_MaHoChieu.SelectedItem as HoChieu).MaHoChieu;
                     String fullPath = Path.GetFullPath(Path.Combine((@"" + Application.StartupPath), @"..\..\"));
                     CreateWordDocument(fullPath + "Template\\template.doc", saveFileDialog1.FileName);
                 }
@@ -121,6 +119,15 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             {
                 t.Abort();
             }
+            /*SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                buttonTaoMoi.Enabled = false;
+                buttonTaoMoi.Text = "ĐANG XỬ LÝ...";
+                fileName = saveFileDialog1.FileName;
+                idHoChieu += (comboBox_MaHoChieu.SelectedItem as HoChieu).MaHoChieu;
+                backgroundWorker_Loading.RunWorkerAsync();
+            }   */   
         }
 
         private void CreateWordDocument(object filename, object saves)
@@ -152,7 +159,7 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
                 doc = wordApp.Documents.Open(ref filename);
                 doc.ActiveWindow.Selection.WholeStory();
                 //doc.Activate();
-                ExportData Objdata = new ExportData((comboBox_MaHoChieu.SelectedItem as HoChieu).MaHoChieu);
+                ExportData Objdata = new ExportData(idHoChieu);
                 //this.FindAndReplace(wordApp, "DonVi", txtDonviNo.Text.Trim());
                 this.FindAndReplace(wordApp, "hour", (Objdata.thoiDiemNo.Hour.ToString() == String.Empty ? "" : Objdata.thoiDiemNo.Hour.ToString()) );
                 this.FindAndReplace(wordApp, "minute", (Objdata.thoiDiemNo.Minute.ToString() == String.Empty ? "" : Objdata.thoiDiemNo.Minute.ToString()) );
@@ -160,7 +167,7 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
                 this.FindAndReplace(wordApp, "month", (Objdata.thoiDiemNo.Month.ToString() == String.Empty ? "" : Objdata.thoiDiemNo.Month.ToString()) );
                 this.FindAndReplace(wordApp, "year", (Objdata.thoiDiemNo.Year.ToString() == String.Empty ? "" : Objdata.thoiDiemNo.Year.ToString()) );
                 this.FindAndReplace(wordApp, "DiaDiemNo", (Objdata.congTruong.TenCongTruong == String.Empty ? "" : Objdata.congTruong.TenCongTruong) );
-                this.FindAndReplace(wordApp, "TenDatDa", Objdata.datDa.TenDatDa.ToString());
+                this.FindAndReplace(wordApp, "TenDatDa", (Objdata.datDa.TenDatDa.ToString() == String.Empty ? "" : Objdata.datDa.TenDatDa.ToString()));
                 Word.Range range = doc.Range(ref missing, ref missing);
                 for (int i = 1; i < Objdata.danhSachLoKhoan.Count; i++)
                 {
@@ -242,6 +249,27 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
                                         ref replaceWithText, ref replace, ref matchKashida,
                                         ref matchDiactitics, ref matchAleftHamza,
                                         ref matchControl);*/
+        }
+
+        private void backgroundWorker_Loading_DoWork(object sender, DoWorkEventArgs e)
+        {
+            String fullPath = Path.GetFullPath(Path.Combine((@"" + Application.StartupPath), @"..\..\"));
+            CreateWordDocument(fullPath + "Template\\template.doc", fileName);
+        }
+
+        private void backgroundWorker_Loading_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                MessageBox.Show("cancel!");
+                buttonTaoMoi.Enabled = true;
+                buttonTaoMoi.Text = "XUẤT BÁO CÁO";
+            }
+            else
+            {
+                buttonTaoMoi.Enabled = true;
+                buttonTaoMoi.Text = "XUẤT BÁO CÁO";
+            }
         }
     }
 }
