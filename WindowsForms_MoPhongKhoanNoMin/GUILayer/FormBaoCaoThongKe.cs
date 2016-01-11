@@ -21,7 +21,7 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
 {
     public partial class FormBaoCaoThongKe : DevExpress.XtraEditors.XtraForm
     {
-        private String idHoChieu, fileName;
+        private String idHoChieu, fileName, userName = "";
         List<Label> textLabel = new List<Label>();
         List<Label> valueLabel = new List<Label>();
         List<System.Windows.Forms.ComboBox> valueComboBox = new List<System.Windows.Forms.ComboBox>();
@@ -100,7 +100,8 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
         {
             Thread t = new Thread(new ThreadStart(BS_Main.LoadingScreen));
             try
-            {            
+            {
+                userName = textBoxNguoiLapHoChieu.Text; //tên người dùng
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {

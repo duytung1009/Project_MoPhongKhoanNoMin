@@ -603,6 +603,7 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             Lcad.DrwRegenViews(hDrw, 0);
             Lcad.WndExeCommand(hWnd, Lcad.LC_CMD_ZOOM_EXT, 0);
             Lcad.OnEventMouseDblClk(_EventMouseDbclick_LoMin);
+            LuuHoChieu(this.hoChieuChinh.MaHoChieu);    //ăn gian...
             BS_LiteCAD.ShowNotifyAutoHide(elementHost1, "Xây dựng lưới lỗ khoan - hoàn thành");
         }
 

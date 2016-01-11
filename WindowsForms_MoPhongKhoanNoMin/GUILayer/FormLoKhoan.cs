@@ -180,9 +180,9 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             comboBox_MayKhoan.DisplayMember = "TenMayKhoan";
             comboBox_MayKhoan.Text = BS_MayKhoan.MayKhoan(loKhoan.MaMayKhoan).TenMayKhoan;
             //hiển thị thông số
-            labelValue_DuongKinh.Text = (Math.Round(loKhoan.BanKinh * 2, 2)).ToString() + " mét";
+            labelValue_DuongKinh.Text = (Math.Round(loKhoan.BanKinh * 2, 2)).ToString();
             textBox_DuongKinh.Text = (Math.Round(loKhoan.BanKinh * 2, 2)).ToString();
-            labelValue_ChieuSauLK.Text = (Math.Round(loKhoan.ChieuSau, 2)).ToString() + " mét";
+            labelValue_ChieuSauLK.Text = (Math.Round(loKhoan.ChieuSau, 2)).ToString();
             textBox_ChieuSauLK.Text = (Math.Round(loKhoan.ChieuSau, 2)).ToString();
             labelValue_HuongKhoan.Text = comboBox_HuongKhoan.Text = loKhoan.HuongKhoan;
             labelValue_ToaDoX.Text = textBox_ToaDoX.Text = (Math.Round(loKhoan.ToaDoX, 2)).ToString();

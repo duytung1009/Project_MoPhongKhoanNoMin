@@ -48,6 +48,8 @@
             this.labelValue_GiaTri6 = new System.Windows.Forms.Label();
             this.labelValue_GiaTri7 = new System.Windows.Forms.Label();
             this.backgroundWorker_Loading = new System.ComponentModel.BackgroundWorker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxNguoiLapHoChieu = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonTaoMoi
@@ -295,6 +297,27 @@
             this.backgroundWorker_Loading.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Loading_DoWork);
             this.backgroundWorker_Loading.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_Loading_RunWorkerCompleted);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(30, 140);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(3);
+            this.label2.Size = new System.Drawing.Size(154, 27);
+            this.label2.TabIndex = 108;
+            this.label2.Text = "Người lập hộ chiếu";
+            // 
+            // textBoxNguoiLapHoChieu
+            // 
+            this.textBoxNguoiLapHoChieu.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNguoiLapHoChieu.Location = new System.Drawing.Point(25, 180);
+            this.textBoxNguoiLapHoChieu.Name = "textBoxNguoiLapHoChieu";
+            this.textBoxNguoiLapHoChieu.Size = new System.Drawing.Size(200, 22);
+            this.textBoxNguoiLapHoChieu.TabIndex = 109;
+            // 
             // FormBaoCaoThongKe
             // 
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
@@ -302,6 +325,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 411);
+            this.Controls.Add(this.textBoxNguoiLapHoChieu);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.labelValue_GiaTri7);
             this.Controls.Add(this.labelValue_GiaTri6);
             this.Controls.Add(this.label_GiaTri7);
@@ -352,5 +377,7 @@
         private System.Windows.Forms.Label labelValue_GiaTri6;
         private System.Windows.Forms.Label labelValue_GiaTri7;
         private System.ComponentModel.BackgroundWorker backgroundWorker_Loading;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxNguoiLapHoChieu;
     }
 }
