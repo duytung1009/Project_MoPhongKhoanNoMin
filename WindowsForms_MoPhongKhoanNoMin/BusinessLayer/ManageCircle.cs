@@ -102,44 +102,44 @@ namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
             }
         }
         ////hàm tính toán số hàng Circle trong bản thiết kế
-        //public void CalRowCount()
-        //{
-        //    if (listCircles.Count > 0)
-        //    {
-        //        double x0 = listCircles[0].GetX();
-        //        double y0 = listCircles[0].GetY();
+        public void CalRowCount()
+        {
+            if (listCircles.Count > 0)
+            {
+                double x0 = listCircles[0].GetX();
+                double y0 = listCircles[0].GetY();
 
-        //        this.rowCount = 0;
-        //        //tính số hàng
-        //        foreach (var circle in this.listCircles)
-        //        {
-        //            if (x0 == circle.GetX())
-        //            {
-        //                this.rowCount++;
-        //            }
-        //        }
-        //    }
-        //}
+                this.rowCount = 0;
+                //tính số hàng
+                foreach (var circle in this.listCircles)
+                {
+                    if (x0 == circle.GetX())
+                    {
+                        this.rowCount++;
+                    }
+                }
+            }
+        }
         ////hàm tính toán số cột Circle trong bản thiết kế
-        //public void CalColumCount()
-        //{
-        //    if (listCircles.Count > 0)
-        //    {
-        //        double x0 = listCircles[0].GetX();
-        //        double y0 = listCircles[0].GetY();
-        //        this.columnCount = 0;
-        //        //tính số cột
-        //        foreach (var circle in this.listCircles)
-        //        {
-        //            if (y0 == circle.GetY())
-        //            {
-        //                this.columnCount++;
-        //            }
-        //        }
-        //    }
-        //}
+        public void CalColumCount()
+        {
+            if (listCircles.Count > 0)
+            {
+                double x0 = listCircles[0].GetX();
+                double y0 = listCircles[0].GetY();
+                this.columnCount = 0;
+                //tính số cột
+                foreach (var circle in this.listCircles)
+                {
+                    if (y0 == circle.GetY())
+                    {
+                        this.columnCount++;
+                    }
+                }
+            }
+        }
 
-        //hàm thêm Circle vào ListCircle
+            //hàm thêm Circle vào ListCircle
         public void AddListCircle(List<Circle> newList)
         {
             foreach (var item in newList)
@@ -166,8 +166,8 @@ namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
                         this.yMin = item.GetY();
                 }               
             }
-            //CalColumCount();
-            //CalRowCount();
+            CalColumCount();
+            CalRowCount();
             CalDeltaX();
             CalDeltaY();
         }
@@ -199,8 +199,8 @@ namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
                     if (circle.GetY() < this.yMin)
                         this.yMin = circle.GetY();
                 }
-                //CalColumCount();
-                //CalRowCount();
+                CalColumCount();
+                CalRowCount();
                 CalDeltaX();
                 CalDeltaY();
             }
@@ -243,6 +243,20 @@ namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
                 }
             }
             return list;
+        }
+
+        //hàm trả về danh sách hàng ở 1 hàng
+        public List<Circle> GetListCircleRow(int row)
+        {
+            List<Circle> newList = new List<Circle>();
+            foreach (var circle in this.listCircles)
+            {
+                if (circle.GetY() == this.yMax - (deltaY * (row - 1)))
+                {
+                    newList.Add(circle);
+                }
+            }
+            return newList;
         }
 
         //hàm trả về danh sách hàng ở trên cùng
@@ -289,14 +303,6 @@ namespace WindowsForms_MoPhongKhoanNoMin.BusinessLayer
         }
 
         //giải pháp thay thế
-        public void CalRowCount()
-        {
-
-        }
-        public void CalColumCount()
-        {
-
-        }
         public void CalBaseAngle()
         {
             double x0 = listCircles[0].GetX();

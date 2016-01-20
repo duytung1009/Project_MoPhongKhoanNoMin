@@ -26,6 +26,7 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
         //biến layer
         private int layerLoMin;
         private int layerLuoiKichThuoc;
+        private int layerDauNoi;
         //private int nameOfBlock;
         //biến lưu sự kiện mouse click
         F_MOUSEDBLCLK _EventMouseDbclick_LoMin;
@@ -86,8 +87,9 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             Lcad.PropwinResize(hProp, 0, 0, splitContainerControl.Panel1.Width, splitContainerControl.Panel1.Height);
             Lcad.WndResize(hWnd, 0, 0, panelControl_hWnd.Width, panelControl_hWnd.Height);
             //thêm layer
-            layerLoMin = Lcad.DrwAddLayer(hDrw, "LoMin", "cyan", 0, Lcad.LC_LWEIGHT_DEFAULT);
+            layerLoMin = Lcad.DrwAddLayer(hDrw, "LoMin", "red", 0, Lcad.LC_LWEIGHT_DEFAULT);
             layerLuoiKichThuoc = Lcad.DrwAddLayer(hDrw, "LuoiKichThuoc", "foreground", 0, Lcad.LC_LWEIGHT_DEFAULT);
+            layerDauNoi = Lcad.DrwAddLayer(hDrw, "KipNo", "foreground", 0, Lcad.LC_LWEIGHT_DEFAULT);
             //vẽ lại hình
             Lcad.WndExeCommand(hWnd, Lcad.LC_CMD_REGEN, 0);
             Lcad.DrwRegenViews(hDrw, 0);
@@ -148,8 +150,9 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             //dựng bản vẽ mới
             this.Text = "Hộ chiếu: [" + this.hoChieuChinh.TenHoChieu + "]";
             Lcad.DrwLoad(hDrw, BS_Template.ChonTemplate(this.banVeChinh.Template).DuongDan, this.Handle, hWnd);
-            layerLoMin = Lcad.DrwAddLayer(hDrw, "LoMin", "cyan", 0, Lcad.LC_LWEIGHT_DEFAULT);
+            layerLoMin = Lcad.DrwAddLayer(hDrw, "LoMin", "red", 0, Lcad.LC_LWEIGHT_DEFAULT);
             layerLuoiKichThuoc = Lcad.DrwAddLayer(hDrw, "LuoiKichThuoc", "foreground", 0, Lcad.LC_LWEIGHT_DEFAULT);
+            layerDauNoi = Lcad.DrwAddLayer(hDrw, "KipNo", "foreground", 0, Lcad.LC_LWEIGHT_DEFAULT);
             //vẽ lại hình
             Lcad.DrwRegenViews(hDrw, 0);
             Lcad.WndExeCommand(hWnd, Lcad.LC_CMD_ZOOM_EXT, 0);
@@ -179,8 +182,9 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
                         //this.banVeChinh.HienKhoangCach = false;
                         this.Text = "Bản vẽ: [" + filename.FileName + "]";
                         Lcad.DrwLoad(hDrw, filename.FileName, this.Handle, hWnd);
-                        layerLoMin = Lcad.DrwAddLayer(hDrw, "LoMin", "cyan", 0, Lcad.LC_LWEIGHT_DEFAULT);
+                        layerLoMin = Lcad.DrwAddLayer(hDrw, "LoMin", "red", 0, Lcad.LC_LWEIGHT_DEFAULT);
                         layerLuoiKichThuoc = Lcad.DrwAddLayer(hDrw, "LuoiKichThuoc", "foreground", 0, Lcad.LC_LWEIGHT_DEFAULT);
+                        layerDauNoi = Lcad.DrwAddLayer(hDrw, "KipNo", "foreground", 0, Lcad.LC_LWEIGHT_DEFAULT);
                         GetCirlcesFromAutocadFile();
                         Lcad.DrwRegenViews(hDrw, 0);
                         BS_LiteCAD.ShowNotifyAutoHide(elementHost1, "Bản vẽ sẵn sàng");
@@ -210,8 +214,9 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             //this.banVeChinh.HienKhoangCach = false;
             this.Text = "Bản vẽ: [" + this.banVeChinh.TenBanVe + "]";
             Lcad.DrwLoad(hDrw, BS_Template.ChonTemplate(this.banVeChinh.Template).DuongDan, this.Handle, hWnd);
-            layerLoMin = Lcad.DrwAddLayer(hDrw, "LoMin", "cyan", 0, Lcad.LC_LWEIGHT_DEFAULT);
+            layerLoMin = Lcad.DrwAddLayer(hDrw, "LoMin", "red", 0, Lcad.LC_LWEIGHT_DEFAULT);
             layerLuoiKichThuoc = Lcad.DrwAddLayer(hDrw, "LuoiKichThuoc", "foreground", 0, Lcad.LC_LWEIGHT_DEFAULT);
+            layerDauNoi = Lcad.DrwAddLayer(hDrw, "KipNo", "foreground", 0, Lcad.LC_LWEIGHT_DEFAULT);
             int hBlockModel = Lcad.PropGetHandle(hDrw, Lcad.LC_PROP_DRW_BLOCK_MODEL);
             foreach (LoKhoan value in danhSachLoKhoan)
             {
@@ -529,7 +534,7 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             Lcad.ViewRasterize(hView, fullPath + "Template\\ViewTemp.bmp", 0, 0, 0, 0, 10);
             Lcad.PropPutInt(hDrw, Lcad.LC_PROP_DRW_COLORBACKM, int.Parse("000000", System.Globalization.NumberStyles.HexNumber));
             Lcad.PropPutInt(hDrw, Lcad.LC_PROP_DRW_COLORFOREM, int.Parse("FFFFFF", System.Globalization.NumberStyles.HexNumber));
-            Lcad.PropPutStr(layerLoMin, Lcad.LC_PROP_LAYER_COLOR, "cyan");
+            Lcad.PropPutStr(layerLoMin, Lcad.LC_PROP_LAYER_COLOR, "red");
             Lcad.WndExeCommand(hWnd, Lcad.LC_CMD_REGEN, 0);
             Lcad.DrwRegenViews(hDrw, 0);
             Lcad.Initialize();
@@ -942,6 +947,203 @@ namespace WindowsForms_MoPhongKhoanNoMin.GUILayer
             }
             mgCircles = new ManageCircle();
             mgCircles.AddListCircle(listCircles);
+        }
+
+        private void barButtonItem_DauNoiTiep_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ManageCircle temp = new ManageCircle();
+            temp = mgCircles;
+            int lineIndex = 1;
+            do
+            {
+                List<Circle> currentRow = temp.GetListCircleRow(lineIndex);
+                for (int i = 0; i < currentRow.Count - 1; i++)
+                {
+                    DrawLine_X(currentRow[i], currentRow[i + 1]);
+                }
+                if(lineIndex % 2 != 0)
+                {
+                    List<Circle> currentCollum = temp.GetListCirleOfLastColumn();
+                    if(currentCollum.Count > 1)
+                    {
+                        DrawLine_Y(currentCollum[0], currentCollum[1]);
+                    }                   
+                }
+                else
+                {
+                    List<Circle> currentCollum = temp.GetListCirleOfFirstColumn();
+                    if (currentCollum.Count > 1)
+                    {
+                        DrawLine_Y(currentCollum[0], currentCollum[1]);
+                    }                       
+                }
+                //temp.RemoveListCircles(currentRow);
+                lineIndex++;
+            }
+            while (lineIndex <= temp.GetRowCount());
+            Lcad.DrwRegenViews(hDrw, 0);
+            Lcad.WndExeCommand(hWnd, Lcad.LC_CMD_ZOOM_EXT, 0);
+        }
+
+        private void barButtonItem_DauSongSong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ManageCircle temp = new ManageCircle();
+            temp = mgCircles;
+            List<Circle> firstCollum = temp.GetListCirleOfFirstColumn();
+            List<Circle> lastCollum = temp.GetListCirleOfLastColumn();
+            int rowNumber = temp.GetRowCount();
+            double sumY1 = 0, sumY2 = 0;
+            double x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+            foreach (Circle c in firstCollum)
+            {
+                x1 = c.GetX();
+                sumY1 += c.GetY();
+            }
+            foreach (Circle c in lastCollum)
+            {
+                x2 = c.GetX();
+                sumY2 += c.GetY();
+            }
+            y1 = y2 = sumY1 / rowNumber;
+            x1 = x1 - banVeChinh.DeltaX;
+            x2 = x2 + banVeChinh.DeltaX;
+            foreach(Circle c in firstCollum)
+            {
+                DrawLine(c.GetX(), c.GetY(), x1, y1);
+            }
+            foreach (Circle c in lastCollum)
+            {
+                DrawLine(c.GetX(), c.GetY(), x2, y2);
+            }
+
+            int lineIndex = 1;
+            do
+            {
+                List<Circle> currentRow = temp.GetListCircleRow(lineIndex);
+                for (int i = 0; i < currentRow.Count - 1; i++)
+                {
+                    DrawLine_X(currentRow[i], currentRow[i + 1]);
+                }
+                lineIndex++;
+                //temp.RemoveListCircles(currentRow);
+            }
+            while (lineIndex <= temp.GetRowCount());
+            Lcad.DrwRegenViews(hDrw, 0);
+            Lcad.WndExeCommand(hWnd, Lcad.LC_CMD_ZOOM_EXT, 0);
+        }
+
+        //cập nhật ds lỗ khoan theo bản vẽ
+        private void UpdateCircleFromAutocad()
+        {
+            int hBlockModel = Lcad.PropGetHandle(hDrw, Lcad.LC_PROP_DRW_BLOCK_MODEL);
+            List<Circle> listCircles = mgCircles.GetListCircles();
+            foreach(Circle c in listCircles)
+            {
+                int hEnt = Lcad.BlockGetFirstEnt(hBlockModel);
+                while (hEnt != 0)
+                {
+                    int entID = Lcad.PropGetInt(hEnt, Lcad.LC_PROP_ENT_ID);
+                    int entType = Lcad.PropGetInt(hEnt, Lcad.LC_PROP_ENT_TYPE);
+                    if (!Lcad.PropGetBool(hEnt, Lcad.LC_PROP_ENT_DELETED))   //kiểm tra xem ent bị xóa hay không
+                    {
+                        if ((entType == Lcad.LC_ENT_CIRCLE) && (entID == c.GetID()))
+                        {
+                            Circle newCircle = new Circle(hEnt);
+                            c.SetX(newCircle.GetX());
+                            c.SetY(newCircle.GetY());
+                            break;
+                        }
+                    }
+                    hEnt = Lcad.BlockGetNextEnt(hBlockModel, hEnt);
+                }
+            }            
+        }
+
+        private void barButtonItem_XoaDauNoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int hBlockModel = Lcad.PropGetHandle(hDrw, Lcad.LC_PROP_DRW_BLOCK_MODEL);
+            Lcad.LayerClear(layerDauNoi, hBlockModel);
+            Lcad.DrwRegenViews(hDrw, 0);
+            Lcad.WndExeCommand(hWnd, Lcad.LC_CMD_ZOOM_EXT, 0);
+        }
+
+        //vẽ đường thẳng giữa 2 điểm
+        private void DrawLine(double x1, double y1, double x2, double y2)
+        {
+            int hBlockModel = Lcad.PropGetHandle(hDrw, Lcad.LC_PROP_DRW_BLOCK_MODEL);
+            int newLine = 0;
+            newLine = Lcad.BlockAddLine(hBlockModel, x1, y1, x2, y2);
+            Lcad.PropPutStr(newLine, Lcad.LC_PROP_ENT_LAYER, "KipNo");
+        }
+        //vẽ kíp nối giữa 2 lỗ khoan cùng 1 hàng
+        private void DrawLine_X(Circle c1, Circle c2)
+        {
+            int gocNghieng = 15;
+            double canhHuyen = banVeChinh.DeltaX * 30 / 100;
+            double x1, y1, x2, y2, c;  //toa do 2 diem gap khuc
+            double a, b;
+            //tinh toan
+            b = Math.Sin(gocNghieng * (Math.PI / 180)) * canhHuyen;
+            a = Math.Sqrt((canhHuyen * canhHuyen) - (b * b));
+            //c = banVeChinh.DeltaX - (b * 2);    //sua moi cai dong nay thoi @@
+            c = Math.Abs(c1.GetX() - c2.GetX()) - (b * 2);
+            if (c1.GetX() > c2.GetX())
+            {
+                x1 = c1.GetX() - b;
+            }
+            else
+            {
+                x1 = c1.GetX() + b;
+            }
+            y1 = c1.GetY() + a;
+            if (c1.GetX() > c2.GetX())
+            {
+                x2 = x1 - c;
+            }
+            else
+            {
+                x2 = x1 + c;
+            }
+            y2 = y1;
+            //ve
+            int hBlockModel = Lcad.PropGetHandle(hDrw, Lcad.LC_PROP_DRW_BLOCK_MODEL);
+            int newLine1 = 0, newLine2 = 0, newLine3 = 0;
+            newLine1 = Lcad.BlockAddLine(hBlockModel, c1.GetX(), c1.GetY(), x1, y1);
+            newLine2 = Lcad.BlockAddLine(hBlockModel, x1, y1, x2, y2);
+            newLine3 = Lcad.BlockAddLine(hBlockModel, x2, y2, c2.GetX(), c2.GetY());
+            Lcad.PropPutStr(newLine1, Lcad.LC_PROP_ENT_LAYER, "KipNo");
+            Lcad.PropPutStr(newLine2, Lcad.LC_PROP_ENT_LAYER, "KipNo");
+            Lcad.PropPutStr(newLine3, Lcad.LC_PROP_ENT_LAYER, "KipNo");
+        }
+        //vẽ kíp nối giữa 2 lỗ khoan cùng 1 cột
+        private void DrawLine_Y(Circle c1, Circle c2)
+        {
+            //ve
+            int hBlockModel = Lcad.PropGetHandle(hDrw, Lcad.LC_PROP_DRW_BLOCK_MODEL);
+            int newLine = 0;
+            newLine = Lcad.BlockAddLine(hBlockModel, c1.GetX(), c1.GetY(), c2.GetX(), c2.GetY());
+            Lcad.PropPutStr(newLine, Lcad.LC_PROP_ENT_LAYER, "KipNo");
+        }
+
+        //toolStrip
+        private void toolStripButton_Undo_Click(object sender, EventArgs e)
+        {          
+            bool flag = Lcad.WndExeCommand(hWnd, Lcad.LC_CMD_UNDO, 0);
+            if (flag)
+            {
+                UpdateCircleFromAutocad();
+                DungLuoiKichThuoc();
+            }
+        }
+
+        private void toolStripButton_Redo_Click(object sender, EventArgs e)
+        {
+            bool flag = Lcad.WndExeCommand(hWnd, Lcad.LC_CMD_REDO, 0);
+            if (flag)
+            {
+                UpdateCircleFromAutocad();
+                DungLuoiKichThuoc();
+            }
         }
 
         //test

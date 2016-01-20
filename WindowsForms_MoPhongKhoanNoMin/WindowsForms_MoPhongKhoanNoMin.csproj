@@ -494,6 +494,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LiteCAD\LiteCAD.dll" />
+    <None Include="Resources\redo.png" />
+    <None Include="Resources\undo.png" />
     <None Include="Resources\update_white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

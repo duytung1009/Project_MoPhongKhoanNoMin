@@ -35,7 +35,8 @@
             this.panelControl_right = new DevExpress.XtraEditors.PanelControl();
             this.panelControl_hWnd = new DevExpress.XtraEditors.PanelControl();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_Undo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_Redo = new System.Windows.Forms.ToolStripButton();
             this.panelControl_hCmd = new DevExpress.XtraEditors.PanelControl();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.s = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -86,6 +87,11 @@
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.defaultLookAndFeel_FormMain = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.panelStatusBar = new System.Windows.Forms.Panel();
+            this.label_StatusBar = new System.Windows.Forms.Label();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem_DauNoiTiep = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_DauSongSong = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_XoaDauNoi = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
             this.splitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_right)).BeginInit();
@@ -94,6 +100,7 @@
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_hCmd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.s)).BeginInit();
+            this.panelStatusBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainerControl
@@ -133,32 +140,45 @@
             // panelControl_hWnd
             // 
             this.panelControl_hWnd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl_hWnd.Location = new System.Drawing.Point(26, 2);
+            this.panelControl_hWnd.Location = new System.Drawing.Point(27, 2);
             this.panelControl_hWnd.Name = "panelControl_hWnd";
-            this.panelControl_hWnd.Size = new System.Drawing.Size(974, 454);
+            this.panelControl_hWnd.Size = new System.Drawing.Size(973, 454);
             this.panelControl_hWnd.TabIndex = 2;
             // 
             // toolStrip2
             // 
             this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Left;
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
+            this.toolStripButton_Undo,
+            this.toolStripButton_Redo});
             this.toolStrip2.Location = new System.Drawing.Point(2, 2);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip2.Size = new System.Drawing.Size(24, 454);
+            this.toolStrip2.Size = new System.Drawing.Size(25, 454);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // toolStripButton1
+            // toolStripButton_Undo
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(21, 20);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton_Undo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_Undo.Image = global::WindowsForms_MoPhongKhoanNoMin.Properties.Resources.undo;
+            this.toolStripButton_Undo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Undo.Name = "toolStripButton_Undo";
+            this.toolStripButton_Undo.Size = new System.Drawing.Size(22, 24);
+            this.toolStripButton_Undo.Text = "Undo";
+            this.toolStripButton_Undo.Click += new System.EventHandler(this.toolStripButton_Undo_Click);
+            // 
+            // toolStripButton_Redo
+            // 
+            this.toolStripButton_Redo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_Redo.Image = global::WindowsForms_MoPhongKhoanNoMin.Properties.Resources.redo;
+            this.toolStripButton_Redo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Redo.Name = "toolStripButton_Redo";
+            this.toolStripButton_Redo.Size = new System.Drawing.Size(22, 24);
+            this.toolStripButton_Redo.Text = "Redo";
+            this.toolStripButton_Redo.Click += new System.EventHandler(this.toolStripButton_Redo_Click);
             // 
             // panelControl_hCmd
             // 
@@ -213,9 +233,12 @@
             this.barButtonItem_Info,
             this.barButtonItem_CapNhatLoKhoan,
             this.barButtonItem_CapDoNo,
-            this.barButtonItem_HoChieuNoMin});
+            this.barButtonItem_HoChieuNoMin,
+            this.barButtonItem_DauNoiTiep,
+            this.barButtonItem_DauSongSong,
+            this.barButtonItem_XoaDauNoi});
             this.s.Location = new System.Drawing.Point(0, 0);
-            this.s.MaxItemId = 37;
+            this.s.MaxItemId = 40;
             this.s.Name = "s";
             this.s.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -580,6 +603,8 @@
             // 
             // ribbonPage3
             // 
+            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup10});
             this.ribbonPage3.Name = "ribbonPage3";
             this.ribbonPage3.Text = "MÔ PHỎNG";
             // 
@@ -648,11 +673,58 @@
             // 
             // panelStatusBar
             // 
+            this.panelStatusBar.Controls.Add(this.label_StatusBar);
             this.panelStatusBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelStatusBar.Location = new System.Drawing.Point(0, 651);
             this.panelStatusBar.Name = "panelStatusBar";
             this.panelStatusBar.Size = new System.Drawing.Size(1264, 30);
             this.panelStatusBar.TabIndex = 7;
+            // 
+            // label_StatusBar
+            // 
+            this.label_StatusBar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label_StatusBar.AutoSize = true;
+            this.label_StatusBar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_StatusBar.Location = new System.Drawing.Point(3, 6);
+            this.label_StatusBar.Name = "label_StatusBar";
+            this.label_StatusBar.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label_StatusBar.Size = new System.Drawing.Size(326, 17);
+            this.label_StatusBar.TabIndex = 0;
+            this.label_StatusBar.Text = "2016 - Bộ Môn Tin Học Mỏ - Bộ Môn Khai Thác Mỏ";
+            this.label_StatusBar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ribbonPageGroup10
+            // 
+            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem_DauNoiTiep);
+            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem_DauSongSong);
+            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem_XoaDauNoi);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            this.ribbonPageGroup10.ShowCaptionButton = false;
+            this.ribbonPageGroup10.Text = "Đấu nối kíp điện";
+            // 
+            // barButtonItem_DauNoiTiep
+            // 
+            this.barButtonItem_DauNoiTiep.Caption = "Đấu nối tiếp";
+            this.barButtonItem_DauNoiTiep.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem_DauNoiTiep.Glyph")));
+            this.barButtonItem_DauNoiTiep.Id = 37;
+            this.barButtonItem_DauNoiTiep.Name = "barButtonItem_DauNoiTiep";
+            this.barButtonItem_DauNoiTiep.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_DauNoiTiep_ItemClick);
+            // 
+            // barButtonItem_DauSongSong
+            // 
+            this.barButtonItem_DauSongSong.Caption = "Đấu song song";
+            this.barButtonItem_DauSongSong.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem_DauSongSong.Glyph")));
+            this.barButtonItem_DauSongSong.Id = 38;
+            this.barButtonItem_DauSongSong.Name = "barButtonItem_DauSongSong";
+            this.barButtonItem_DauSongSong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_DauSongSong_ItemClick);
+            // 
+            // barButtonItem_XoaDauNoi
+            // 
+            this.barButtonItem_XoaDauNoi.Caption = "Hủy đấu nối";
+            this.barButtonItem_XoaDauNoi.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem_XoaDauNoi.Glyph")));
+            this.barButtonItem_XoaDauNoi.Id = 39;
+            this.barButtonItem_XoaDauNoi.Name = "barButtonItem_XoaDauNoi";
+            this.barButtonItem_XoaDauNoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_XoaDauNoi_ItemClick);
             // 
             // FormMain
             // 
@@ -682,6 +754,8 @@
             this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_hCmd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.s)).EndInit();
+            this.panelStatusBar.ResumeLayout(false);
+            this.panelStatusBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -693,7 +767,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl_right;
         private DevExpress.XtraEditors.PanelControl panelControl_hWnd;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Undo;
         private DevExpress.XtraEditors.PanelControl panelControl_hCmd;
         private DevExpress.XtraBars.Ribbon.RibbonControl s;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
@@ -745,5 +819,11 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage5;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_HoChieuNoMin;
+        private System.Windows.Forms.Label label_StatusBar;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Redo;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem_DauNoiTiep;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem_DauSongSong;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem_XoaDauNoi;
     }
 }
